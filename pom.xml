@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mx.com.axity</groupId>
-    <artifactId>project</artifactId>
+    <artifactId>movie-bot</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>project-web</module>
-        <module>project-services</module>
-        <module>project-persistence</module>
-        <module>project-model</module>
-        <module>project-commons</module>
+        <module>movie-bot-services</module>
+        <module>movie-bot-web</module>
+        <module>movie-bot-persistence</module>
+        <module>movie-bot-model</module>
+        <module>movie-bot-commons</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -29,35 +29,35 @@
         <spring.version>2.0.3.RELEASE</spring.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <postgressql.version>42.2.2</postgressql.version>
-        <maven.compiler.source>10</maven.compiler.source>
-        <maven.compiler.target>10</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>mx.com.axity</groupId>
-                <artifactId>project-commons</artifactId>
+                <artifactId>movie-bot-commons</artifactId>
                 <version>${snapshot.version}</version>
             </dependency>
             <dependency>
                 <groupId>mx.com.axity</groupId>
-                <artifactId>project-model</artifactId>
+                <artifactId>movie-bot-model</artifactId>
                 <version>${snapshot.version}</version>
             </dependency>
             <dependency>
                 <groupId>mx.com.axity</groupId>
-                <artifactId>project-persistence</artifactId>
+                <artifactId>movie-bot-persistence</artifactId>
                 <version>${snapshot.version}</version>
             </dependency>
             <dependency>
                 <groupId>mx.com.axity</groupId>
-                <artifactId>project-services</artifactId>
+                <artifactId>movie-bot-services</artifactId>
                 <version>${snapshot.version}</version>
             </dependency>
             <dependency>
                 <groupId>mx.com.axity</groupId>
-                <artifactId>project-web</artifactId>
+                <artifactId>movie-bot-web</artifactId>
                 <version>${snapshot.version}</version>
             </dependency>
             <dependency>
