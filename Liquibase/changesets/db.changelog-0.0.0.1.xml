@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+
+    <changeSet author="JCASALES" id="20190224-1">
+        <createTable tableName="USER">
+            <column name="USER_ID" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="USER_NAME" type="VARCHAR(20)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="USER_LAST_NAME" type="VARCHAR(20)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_ID" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="USER_AGE" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="USER_USERNAME" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="USER_PASSWORD" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-2">
+        <createTable tableName="ADDRESS">
+            <column name="ADDRESS_ID" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="ADDRESS_STREET" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_NUMBER" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_CITY" type="VARCHAR(30)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_STATE" type="VARCHAR(30)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_COUNTRY" type="VARCHAR(30)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ADDRESS_ZIP_CODE" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-3">
+        <createTable tableName="PERMISSIONS">
+            <column name="PERMISSIONS_ID" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="PERMISSIONS_TYPE" type="VARCHAR(20)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="PERMISSIONS_DESCRIPTION" type="VARCHAR(30)">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-4">
+        <createTable tableName="USER_PERMISSIONS">
+            <column name="PERMISSIONS_ID" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+            <column name="USER_ID" type="INT">
+                <constraints nullable="false" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-5">
+    <addForeignKeyConstraint baseColumnNames="ADDRESS_ID"
+            baseTableName="USER"
+            constraintName="FK_USER_ADDRESS"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"
+            referencedColumnNames="ADDRESS_ID"
+            referencedTableName="ADDRESS"/>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-6">
+    <addForeignKeyConstraint baseColumnNames="PERMISSIONS_ID"
+            baseTableName="USER_PERMISSIONS"
+            constraintName="FK_USER_PERMISSIONS"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"
+            referencedColumnNames="PERMISSIONS_ID"
+            referencedTableName="PERMISSIONS"/>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-7">
+    <addForeignKeyConstraint baseColumnNames="USER_ID"
+            baseTableName="USER_PERMISSIONS"
+            constraintName="FK_PERMISSIONS-USER"
+            onDelete="CASCADE"
+            onUpdate="RESTRICT"
+            referencedColumnNames="USER_ID"
+            referencedTableName="USER"/>
+    </changeSet>
+
+    <changeSet author="JCASALES" id="20190224-8">
+    <addPrimaryKey columnNames="USER_ID, PERMISSIONS_ID"
+            constraintName="pk_USER_PERMISSIONS"
+            schemaName="public"
+            tableName="USER_PERMISSIONS"/>
+</changeSet>
+
+</databaseChangeLog> 
